@@ -1,16 +1,12 @@
 <template>
 	<div id="app" class="app">
 		<div class="navBar">
-			<img class="img" src="@/assets/JPEG24.jpg" alt="" srcset="">
+			<img class="img" src="@/assets/JPEG24.jpg" alt="" srcset="" />
 		</div>
 
 		<Chart class="chart" v-bind:chartData="chartData" />
 
-				<div> {{chartData}} </div>
-
-
 		<CryptoList v-bind:tableData="tableData" />
-
 
 		<!-- <button @click="click">dvhdhs</button> -->
 	</div>
@@ -28,19 +24,19 @@ export default {
 		},
 		chartData() {
 			// данные для графика
-			return this.$store.getters.getData || {};
+			return this.$store.getters.getData || [];
 		},
 		titleOfCurrency() {
-			return this.$store.getters.GET_TITLE || ''
-		}
+			return this.$store.getters.GET_TITLE || '';
+		},
 	},
 	watch: {
-		titleOfCurrency: function(newValue, oldValue){
+		titleOfCurrency: function(newValue, oldValue) {
 			console.log(newValue);
 		},
 		chartData: function(val) {
 			console.log('change data', val);
-		}
+		},
 	},
 	components: {
 		CryptoList,
@@ -50,10 +46,8 @@ export default {
 		// this.$store.dispatch('fetchChartData', 'BTC');
 		this.$store.dispatch('fetchTableData');
 	},
-	mounted() {
-	},
-	methods: {
-	},
+	mounted() {},
+	methods: {},
 };
 </script>
 

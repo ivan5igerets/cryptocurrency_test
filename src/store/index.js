@@ -1,5 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex)
 
@@ -13,7 +13,7 @@ export default new Vuex.Store({
 
             crypt = Object.entries(crypt)[5][1].Data
 
-            let data = {};
+            let data = [];
 
             for (let i = 0; i < crypt.length - 1; ++i) {
 
@@ -35,7 +35,7 @@ export default new Vuex.Store({
                 }
                 let time = hour + ':' + min + ':' + sec;
 
-                data[crypt[i].open] = time;
+                data.push({ [crypt[i].open]: time });
             }
 
             // this.title = name
@@ -88,18 +88,18 @@ export default new Vuex.Store({
         },
 
         // table methods
-        SOCKET_ONOPEN (state, event)  {
+        SOCKET_ONOPEN(state, event) {
             Vue.prototype.$socket = event.currentTarget
             // state.socket.isConnected = true
         },
-        SOCKET_ONCLOSE (state, event)  {
+        SOCKET_ONCLOSE(state, event) {
             // state.socket.isConnected = false
         },
-        SOCKET_ONERROR (state, event)  {
+        SOCKET_ONERROR(state, event) {
             console.error(state, event)
         },
         // default handler called for all methods
-        SOCKET_ONMESSAGE (state, data)  {
+        SOCKET_ONMESSAGE(state, data) {
             // нужно добавлять последний обьект (посделнюю цену и время)
             data = JSON.parse(data['data'])
             data = Object.entries(data)
@@ -150,13 +150,13 @@ export default new Vuex.Store({
             }
             let time = hour + ':' + min + ':' + sec;
 
-            state.data[data[0]] = time
+            state.data.push({ [data[0]]: time })
         },
 
 
         // mutations for reconnect methods
         SOCKET_RECONNECT(state, count) {
-            console.info(state, count) 
+            console.info(state, count)
         },
         SOCKET_RECONNECT_ERROR(state) {
             state.socket.reconnectError = true;

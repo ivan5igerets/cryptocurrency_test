@@ -16,13 +16,13 @@ let chart = {
 	props: ['chartData'],
 	computed: {
 		getTitle() {
-			return this.$store.getters.GET_TITLE || ''
-		}
+			return this.$store.getters.GET_TITLE || '';
+		},
 	},
 	methods: {
 		showChart: function() {
-			const price = Object.keys(this.chartData) || null;
-			const time = Object.values(this.chartData) || null;
+			const price = this.chartData.reduce((acc, cur) => [...acc, ...Object.keys(cur)], []) || null;
+			const time = this.chartData.reduce((acc, cur) => [...acc, ...Object.values(cur)], []) || null;
 
 			this.renderChart(
 				{
@@ -70,7 +70,6 @@ let chart = {
 };
 
 export default chart;
-
 </script>
 
 <style>
