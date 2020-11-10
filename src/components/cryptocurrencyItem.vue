@@ -1,7 +1,9 @@
 <template>
     <div class="cryptoItem" v-on:click.capture="drowChart">
         <span>{{price[0]}}</span>
-        <span>{{price[1]}}   <span class="dinamyc"> 0.0 </span></span>
+        <span>{{price[1]}}   
+            <span class="dinamyc" > {{price[2]}} </span>
+        </span>
     </div>
 </template>
 
@@ -20,10 +22,12 @@ export default {
 
             el = el.getElementsByTagName('span')
             this.$store.dispatch('fetchChartData', el[0].innerHTML)
-            this.$store.dispatch('SUBSCRIBE', el[0].innerHTML)
+            this.$store.dispatch('SUBSCRIBE')
 
             window.scrollTo(0, 0)
         }
+    },
+    mounted() {
     }
 }
 </script>
@@ -47,8 +51,8 @@ export default {
 
 .dinamyc {
     padding: 3px;
-    color: #5dd600;
     background: #636363;
     min-width: 300px;
+    color: #5dd600;
 }
 </style>

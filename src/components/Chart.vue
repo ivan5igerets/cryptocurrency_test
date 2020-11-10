@@ -32,12 +32,7 @@ let chart = {
 							label: this.getTitle,
 							data: price,
 							backgroundColor: [
-								// 'rgba(255, 99, 132, 0.2)',
 								'rgba(54, 162, 235, 0.2)',
-								// 'rgba(255, 206, 86, 0.2)',
-								// 'rgba(75, 192, 192, 0.2)',
-								// 'rgba(153, 102, 255, 0.2)',
-								// 'rgba(255, 159, 64, 0.2)'
 							],
 							borderColor: 'rgba(255, 99, 132, 1)',
 							borderWidth: 1,
@@ -64,7 +59,6 @@ let chart = {
 	watch: {
 		chartData: function(newValue, oldValue) {
 			this.showChart();
-			// console.log('new value', newValue);
 		},
 	},
 };
@@ -78,9 +72,6 @@ export default chart;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 10px;
-	/* min-width: 40%; */
-	/* max-height: 100px; */
-	/* max-width: 90%; */
 	background: #e7e7e7;
 	align-content: center;
 }

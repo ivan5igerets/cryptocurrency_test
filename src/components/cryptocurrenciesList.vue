@@ -6,7 +6,6 @@
             :key="price.id" 
         /> 
 
-
     </div>
 </template>
 
@@ -27,7 +26,6 @@ export default {
     padding: 10px;
     max-width: 70%;
     min-width: 40%;
-    /* max-width: 90%; */
     background: #E7E7E7;
     align-content: center;
 }
